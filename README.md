@@ -22,7 +22,8 @@ Formatted using Prettier.
 
 **Images and links**
 
-Link to deployed project on Github Pages:
-Link to Gifs and screenshots of project.
+-Link to deployed project on Github Pages: [git@github.com:drevega/se_project_spots.git](https://github.com/drevega/se_project_spots.git)
+
+-Link to Gifs and screenshots of project.
 
 Thank you for viewing!
