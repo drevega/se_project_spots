@@ -5,8 +5,10 @@
 }
 
 .profile__avatar {
+  margin-right: 20px;
   height: 190px;
   width: 190px;
+  border-radius: 8px;
 }
 
 .profile__column {
@@ -19,11 +21,21 @@
   font-weight: 500;
   font-size: 32px;
   line-height: 1;
+  color: #212121;
   max-width: 420px;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
 
 .profile__description {
   margin: 0;
+  color: #212121;
+  opacity: 0.7;
+  font-size: 16px;
+  line-height: 100%;
   display: -webkit-box;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -34,8 +46,11 @@
 
 .profile__edit-button {
   margin-top: auto;
-  top: 20px;
-  left: 20px;
+  padding: 0 0;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 100%;
+  color: #212121;
   opacity: 0.7;
   display: flex;
   gap: 8px;
@@ -47,19 +62,18 @@
 
 .profile__edit-button:hover {
   cursor: pointer;
-  color: #212121;
+  opacity: 1;
 }
 
 .profile__new-button {
   margin-left: auto;
   background-color: #212121;
   color: #fcf5e5;
+  font-size: 16px;
+  line-height: 100%;
   width: 157px;
   height: 52px;
-  padding-top: 18px;
-  padding-right: 32px;
-  padding-bottom: 18px;
-  padding-left: 32px;
+  padding: 18px 32px;
   display: flex;
   align-items: center;
   position: relative;
@@ -68,12 +82,13 @@
   gap: 8px;
   white-space: nowrap;
   border-radius: 8px;
+  border: none;
   align-self: flex-end;
 }
 
 .profile__new-button:hover {
   cursor: pointer;
-  background-color: #212121cc;
+  opacity: 0.8;
 }
 
 @media screen and (max-width: 627px) {
@@ -95,11 +110,21 @@
     font-size: 20px;
     margin: 0 0 6px;
     max-width: 288px;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
   }
 
   .profile__description {
     margin: 0 0 32px;
     max-width: 288px;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
   }
 
   .profile__column {
