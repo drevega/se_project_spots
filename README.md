@@ -20,7 +20,7 @@ Formatted using Prettier.
 
 **Images and links**
 
--Link to deployed project on Github Pages: https://drevega.github.io/se_project_spots
+-Link to deployed project on Github Pages: https://drevega.github.io/se_project_spots/
 
 -Link to video description of this project.
 https://drive.google.com/file/d/1zFe-gki1S4N1cdJoSvI9J3fdBJOi0vmn/view?usp=sharing
