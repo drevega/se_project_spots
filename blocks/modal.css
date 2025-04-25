@@ -82,7 +82,12 @@
 }
 
 .modal__input::placeholer {
-  color: #2121214d;
+  opacity: 0.3;
+}
+
+.modal__input:hover {
+  cursor: pointer;
+  border-radius: 8px;
 }
 
 .submit__button {
