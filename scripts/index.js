@@ -1,3 +1,30 @@
+const initialCards = [
+  {
+    name: "Izzy Gerosa",
+    link: "https://unsplash.com/photos/person-holding-instant-camera-xniTNHp4UVE",
+  },
+  {
+    name: "Cafe Spot",
+    link: "https://unsplash.com/photos/a-person-works-on-a-laptop-by-a-window-TbSfPIhtfbg",
+  },
+  {
+    name: "City sunset",
+    link: "https://unsplash.com/photos/empire-state-building-new-york-at-night-fT6-YkB0nfg",
+  },
+  {
+    name: "Tokyo scene",
+    link: "https://unsplash.com/photos/red-staircase-bar-handle-OiERUvVrioU",
+  },
+  {
+    name: "GTO",
+    link: "https://unsplash.com/photos/a-view-of-a-city-with-mountains-in-the-background-k_VqQKvuaT8",
+  },
+  {
+    name: "Moonset",
+    link: "https://unsplash.com/photos/a-full-moon-rising-over-a-mountain-range-CWTz1ZE2IUE",
+  },
+];
+
 const editProfileButton = document.querySelector(".profile__edit-button");
 const editProfileModal = document.querySelector("#edit-profile-modal");
 const editProfileCloseButton = editProfileModal.querySelector(
@@ -57,3 +84,8 @@ function handleAddCardSubmit(evt) {
 }
 
 editNewPostForm.addEventListener("submit", handleAddCardSubmit);
+
+initialCards.forEach(function (item) {
+  console.log(item.name);
+  console.log(item.link);
+});
