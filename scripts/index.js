@@ -1,27 +1,27 @@
 const initialCards = [
   {
     name: "Izzy Gerosa",
-    link: "https://unsplash.com/photos/person-holding-instant-camera-xniTNHp4UVE",
+    link: "https://images.unsplash.com/photo-1520792429211-6dd14f226f5f?q=80&w=3348&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     name: "Cafe Spot",
-    link: "https://unsplash.com/photos/a-person-works-on-a-laptop-by-a-window-TbSfPIhtfbg",
+    link: "https://images.unsplash.com/photo-1743507664175-e1a0ebccfcb3?q=80&w=1285&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     name: "City sunset",
-    link: "https://unsplash.com/photos/empire-state-building-new-york-at-night-fT6-YkB0nfg",
+    link: "https://images.unsplash.com/photo-1541336032412-2048a678540d?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     name: "Tokyo scene",
-    link: "https://unsplash.com/photos/red-staircase-bar-handle-OiERUvVrioU",
+    link: "https://images.unsplash.com/photo-1542931287-023b922fa89b?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D://unsplash.com/photos/red-staircase-bar-handle-OiERUvVrioU",
   },
   {
     name: "GTO",
-    link: "https://unsplash.com/photos/a-view-of-a-city-with-mountains-in-the-background-k_VqQKvuaT8",
+    link: "https://images.unsplash.com/photo-1579116316943-8c5b40fa63f0?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     name: "Moonset",
-    link: "https://unsplash.com/photos/a-full-moon-rising-over-a-mountain-range-CWTz1ZE2IUE",
+    link: "https://images.unsplash.com/photo-1738312325689-6a45f312070d?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
 ];
 
@@ -49,29 +49,39 @@ const editCaptionModal = newPostModal.querySelector("#image-caption-input");
 const profileNameEl = document.querySelector(".profile__name");
 const profileDescriptionEl = document.querySelector(".profile__description");
 
+function openModal(modal) {
+  modal.classList.add("modal_is-opened");
+}
+
+function closeModal(modal) {
+  modal.classList.remove("modal_is-opened");
+}
+
 editProfileButton.addEventListener("click", function () {
   editProfileNameInput.value = profileNameEl.textContent;
   editProfileDescriptionInput.value = profileDescriptionEl.textContent;
-  editProfileModal.classList.add("modal_is-opened");
+  openModal(editProfileModal);
 });
 
 editProfileCloseButton.addEventListener("click", function () {
-  editProfileModal.classList.remove("modal_is-opened");
+  closeModal(editProfileModal);
 });
 
 newPostButton.addEventListener("click", function () {
-  newPostModal.classList.add("modal_is-opened");
+  // newPostModal.classList.add("modal_is-opened");
+  openModal(newPostModal);
 });
 
 newPostCloseButton.addEventListener("click", function () {
-  newPostModal.classList.remove("modal_is-opened");
+  // newPostModal.classList.remove("modal_is-opened");
+  closeModal(newPostModal);
 });
 
 function handleEditProfileSubmit(evt) {
   evt.preventDefault();
   profileNameEl.textContent = editProfileNameInput.value;
   profileDescriptionEl.textContent = editProfileDescriptionInput.value;
-  editProfileModal.classList.remove("modal_is-opened");
+  closeModal(editProfileModal);
 }
 
 editProfileForm.addEventListener("submit", handleEditProfileSubmit);
@@ -80,7 +90,7 @@ function handleAddCardSubmit(evt) {
   evt.preventDefault();
   console.log(editImageLink.value);
   console.log(editCaptionModal.value);
-  newPostModal.classList.remove("modal_is-opened");
+  closeModal(newPostModal);
 }
 
 editNewPostForm.addEventListener("submit", handleAddCardSubmit);
