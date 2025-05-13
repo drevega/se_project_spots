@@ -144,6 +144,8 @@ function handleAddCardSubmit(evt) {
 
   const cardElement = getCardElement(inputValues);
   cardsList.prepend(cardElement);
+  editImageLink.value = "";
+  editCaptionModal.value = "";
 
   closeModal(newPostModal);
 }
