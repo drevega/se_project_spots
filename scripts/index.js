@@ -17,7 +17,7 @@ const initialCards = [
   },
   {
     name: "Tokyo scene",
-    link: "https://images.unsplash.com/photo-1542931287-023b922fa89b?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D://unsplash.com/photos/red-staircase-bar-handle-OiERUvVrioU",
+    link: "https://images.unsplash.com/photo-1542931287-023b922fa89b?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     name: "GTO",
@@ -42,9 +42,11 @@ const editProfileDescriptionInput = editProfileModal.querySelector(
   "#profile-description-input"
 );
 
+
 const newPostButton = document.querySelector(".profile__new-button");
 const newPostModal = document.querySelector("#new-post-modal");
 const newPostCloseButton = newPostModal.querySelector(".modal__close-button");
+const newPostSaveButton = newPostModal.querySelector(".modal__submit-button");
 
 const editNewPostForm = newPostModal.querySelector(".modal__form");
 const editImageLink = newPostModal.querySelector("#card-image-input");
@@ -59,6 +61,10 @@ const previewModalCloseBtn = previewModal.querySelector(
 );
 const previewImageEl = previewModal.querySelector(".modal__image");
 const previewCaption = previewModal.querySelector(".modal__caption");
+
+handleModalOverlay(editProfileModal);
+handleModalOverlay(newPostModal);
+handleModalOverlay(previewModal);
 
 const cardTemplate = document
   .querySelector("#card-template")
@@ -102,11 +108,29 @@ function closeModal(modal) {
   modal.classList.remove("modal_is-opened");
 }
 
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        const openedModal = document.querySelector('.modal_is-opened');
+        if (openedModal) {
+            closeModal(openedModal);
+        }
+    }
+});
+
+
 editProfileButton.addEventListener("click", function () {
   editProfileNameInput.value = profileNameEl.textContent;
   editProfileDescriptionInput.value = profileDescriptionEl.textContent;
   openModal(editProfileModal);
 });
+
+function handleModalOverlay(modal) {
+  modal.addEventListener("click", (event) => {
+    if (event.target.classList.contains("modal")) {
+      closeModal(modal);
+    }
+  });
+}
 
 editProfileCloseButton.addEventListener("click", function () {
   closeModal(editProfileModal);
@@ -120,7 +144,6 @@ newPostCloseButton.addEventListener("click", function () {
   closeModal(newPostModal);
 });
 
-//made this change to close button
 previewModalCloseBtn.addEventListener("click", function () {
   closeModal(previewModal);
 });
@@ -148,6 +171,7 @@ function handleAddCardSubmit(evt) {
   editCaptionModal.value = "";
 
   closeModal(newPostModal);
+disableButton(newPostSaveButton, settings);
 }
 
 editNewPostForm.addEventListener("submit", handleAddCardSubmit);
