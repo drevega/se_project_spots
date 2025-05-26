@@ -75,3 +75,5 @@ function enableValidation(config) {
 };
 
 enableValidation(settings);
+
+export { settings, resetValidation, disableButton };
