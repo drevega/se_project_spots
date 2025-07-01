@@ -7,7 +7,6 @@ import {
 } from "../scripts/validation.js";
 import { setButtonText } from "../utils/helpers.js";
 
-import "../pages/index.css";
 import Api from "../utils/Api.js";
 
 // instantiate Api.js in index.js**
@@ -231,8 +230,8 @@ deleteModalCloseButton.addEventListener("click", () => {
 deleteForm.addEventListener("submit", (evt) => {
   evt.preventDefault();
 
-  const subtmitBtn = evt.submitter;
-  setButtonText(subtmitBtn, true, "Delete", "Deleting...");
+  const submitBtn = evt.submitter;
+  setButtonText(submitBtn, true, "Delete", "Deleting...");
 
   if (!currentCardToDelete) return;
 
@@ -252,7 +251,7 @@ deleteForm.addEventListener("submit", (evt) => {
     })
     .catch(console.error)
     .finally(() => {
-      setButtonText(subtmitBtn, false, "Delete");
+      setButtonText(submitBtn, false, "Delete");
     });
 });
 
@@ -268,8 +267,8 @@ newAvatarButton.addEventListener("click", function () {
 function handleEditProfileSubmit(evt) {
   evt.preventDefault();
 
-  const subtmitBtn = evt.submitter;
-  setButtonText(subtmitBtn, true);
+  const submitBtn = evt.submitter;
+  setButtonText(submitBtn, true);
 
   api
     .editUserInfo({
@@ -281,9 +280,11 @@ function handleEditProfileSubmit(evt) {
       profileDescriptionEl.textContent = data.about;
       closeModal(editProfileModal);
     })
-    .catch(console.error)
+    .catch((err) => {
+  console.error("Failed to update profile:", err);
+    })
     .finally(() => {
-      setButtonText(subtmitBtn, false);
+      setButtonText(submitBtn, false);
     });
 }
 
@@ -336,6 +337,8 @@ function handleEditAvatarSubmit(evt) {
     .editAvatar({ avatar: avatarInput.value })
     .then((data) => {
       document.querySelector(".profile__avatar").src = data.avatar;
+      editAvatarForm.reset();
+      disableButton(submitBtn, settings);
       closeModal(newAvatarModal);
     })
     .catch(console.error)
